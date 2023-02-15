@@ -15,7 +15,9 @@ jobs:
     - uses: actions/checkout@v3
   
     - name: install mxe requirements
-      run: sudo apt-get install -y \
+      run: |
+            sudo apt update
+            sudo apt install -y \
             autoconf \
             automake \
             autopoint \
