@@ -26,12 +26,10 @@ jobs:
             bzip2 \
             flex \
             g++ \
-            g++-multilib \
             gettext \
             git \
             gperf \
             intltool \
-            libc6-dev-i386 \
             libgdk-pixbuf2.0-dev \
             libltdl-dev \
             libgl-dev \
@@ -51,16 +49,14 @@ jobs:
             sed \
             unzip \
             wget \
-            xz-utils \
-            g++-multilib \
-            libc6-dev-i386
+            xz-utils
 
     - name: install mxe
       run: |
            git clone https://github.com/mxe/mxe
            cp qpdfview.mk mxe/plugins/apps
            cd mxe
-           make JOBS=4 qpdfview MXE_TARGETS="i686-w64-mingw32.static x86_64-w64-mingw32.static" MXE_PLUGIN_DIRS+=plugins/apps
+           make JOBS=4 qpdfview MXE_TARGETS="x86_64-w64-mingw32.static" MXE_PLUGIN_DIRS+=plugins/apps
 
 #     - name: Run check
 #       run: make check
