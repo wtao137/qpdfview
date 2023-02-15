@@ -15,10 +15,11 @@ jobs:
     - uses: actions/checkout@v3
   
     - name: install mxe
-    - run: git clone https://github.com/mxe/mxe
-    - run: cp qpdfview.mk mxe/plugins/apps
-    - run: make JOBS=4 qpdfview MXE_TARGETS="i686-w64-mingw32.static x86_64-w64-mingw32.static" MXE_PLUGIN_DIRS+=plugins/apps
-      working-directory: mxe
+      run: |
+           git clone https://github.com/mxe/mxe
+           cp qpdfview.mk mxe/plugins/apps
+           cd mxe
+           make JOBS=4 qpdfview MXE_TARGETS="i686-w64-mingw32.static x86_64-w64-mingw32.static" MXE_PLUGIN_DIRS+=plugins/apps
 
 #     - name: Run check
 #       run: make check
