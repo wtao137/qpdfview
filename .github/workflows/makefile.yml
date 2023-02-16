@@ -9,7 +9,8 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+#     runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v3
@@ -50,13 +51,28 @@ jobs:
             unzip \
             wget \
             xz-utils
+            sudo apt-get install \
+            software-properties-common \
+            lsb-release
+            sudo apt-key adv \
+                --keyserver keyserver.ubuntu.com \
+                --recv-keys 86B72ED9 && \
+            sudo add-apt-repository \
+                "deb [arch=amd64] https://pkg.mxe.cc/repos/apt `lsb_release -sc` main" && \
+            sudo apt-get update
+            sudo apt-get install -y \
+            mxe-x86-64-w64-mingw32.static-cc \
+            mxe-x86-64-w64-mingw32.static-djvulibre \
+            mxe-x86-64-w64-mingw32.static-libspectre \
+            mxe-x86-64-w64-mingw32.static-qtsvg \
+            mxe-x86-64-w64-mingw32.static-qttools \
+            mxe-x86-64-w64-mingw32.static-poppler
 
     - name: install mxe
       run: |
-           git clone https://github.com/mxe/mxe
-           cp qpdfview.mk mxe/plugins/apps
-           cd mxe
-           make JOBS=4 qpdfview MXE_TARGETS="x86_64-w64-mingw32.static" MXE_PLUGIN_DIRS+=plugins/apps
+           suo cp qpdfview.mk /usr/lib/mxe/plugins/apps
+           cd /usr/lib/mxe
+           sudo make JOBS=4 qpdfview MXE_TARGETS="x86_64-w64-mingw32.static" MXE_PLUGIN_DIRS+=plugins/apps
 
 #     - name: Run check
 #       run: make check
