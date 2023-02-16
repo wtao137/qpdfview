@@ -70,7 +70,7 @@ jobs:
 
     - name: install mxe
       run: |
-           suo cp qpdfview.mk /usr/lib/mxe/plugins/apps
+           sudo cp qpdfview.mk /usr/lib/mxe/plugins/apps
            cd /usr/lib/mxe
            sudo make JOBS=4 qpdfview MXE_TARGETS="x86_64-w64-mingw32.static" MXE_PLUGIN_DIRS+=plugins/apps
 
