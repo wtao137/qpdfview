@@ -12,7 +12,7 @@ $(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.gz
 $(PKG)_URL      := https://launchpad.net/$(PKG)/trunk/$($(PKG)_VERSION)/+download/$($(PKG)_FILE)
 $(PKG)_WEBSITE  := https://launchpad.net/qpdfview
 $(PKG)_OWNER    := https://launchpad.net/~adamreichold
-$(PKG)_DEPS     := cc djvulibre libspectre qtsvg qttools poppler
+# $(PKG)_DEPS     := cc djvulibre libspectre qtsvg qttools poppler
 
 define $(PKG)_UPDATE
     $(WGET) -q -O- 'https://launchpad.net/qpdfview' | \
